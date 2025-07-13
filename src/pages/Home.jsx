@@ -3,9 +3,9 @@ import axios from 'axios';
 import TinderCard from 'react-tinder-card';
 import html2canvas from 'html2canvas';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title } from 'chart.js';
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title, Filler } from 'chart.js';
 
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Title);
+ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Title, Filler);
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -22,7 +22,7 @@ const Home = () => {
       try {
         const cached = JSON.parse(localStorage.getItem('articles')) || [];
         if (cached.length) setArticles(cached);
-        const apiKey = import.meta.env.VITE_NEWS_API_KEY || process.env.REACT_APP_NEWS_API_KEY;
+        const apiKey = import.meta.env.VITE_NEWS_API_KEY;
         if (!apiKey) {
           throw new Error('API key not found. Please set VITE_NEWS_API_KEY or REACT_APP_NEWS_API_KEY in .env');
         }
