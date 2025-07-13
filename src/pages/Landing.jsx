@@ -1,40 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
-// import Lottie from 'react-lottie-player';
-// import swipeAnimation from './assets/swipe-animation.json'; // Assume a Lottie JSON file for swipe animation
+import { GalleryHorizontal } from "lucide-react";
+import newsLogo from "../assets/newsapi-logo.png"
+
 
 const Landing = () => {
-  // Animation variants
-  const heroVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: (i) => ({
-      opacity: 1,
-      scale: 1,
-      transition: { delay: i * 0.2, duration: 0.5, ease: "easeOut" },
-    }),
-  };
-  const logoVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+ 
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 flex flex-col font-sans">
       {/* Navigation Header */}
       <nav className="sticky top-0 bg-blue-700 text-white py-4 px-4 flex justify-around items-center shadow-md z-10">
-        <h1 className="text-2xl font-extrabold">SwipeScoop</h1>
+        <h1 className="text-2xl font-extrabold flex items-center ">
+          <GalleryHorizontal/>
+          SwipeScoop</h1>
         <div className="space-x-4">
           <a href="#top" className="hover:underline font-bold ">
             Home
@@ -61,7 +41,7 @@ const Landing = () => {
           className="w-full justify-center pt-4 "
           initial="hidden"
           animate="visible"
-          variants={heroVariants}
+         
         >
           <div className="">
             <motion.h1
@@ -98,7 +78,7 @@ const Landing = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Try Now
+              Get Started
             </motion.a>
             <motion.a
               initial={{ y: 30, opacity: 0 }}
@@ -187,7 +167,7 @@ const Landing = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={cardVariants}
+             
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
@@ -210,7 +190,7 @@ const Landing = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={heroVariants}
+          
         >
           What Users Say
         </motion.h2>
@@ -236,7 +216,7 @@ const Landing = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={cardVariants}
+             
               whileHover={{ y: -5 }}
             >
               <p className="text-gray-700 italic">"{testimonial.quote}"</p>
@@ -260,7 +240,7 @@ const Landing = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={logoVariants}
+          
         >
           Powered by
         </motion.p>
@@ -269,10 +249,10 @@ const Landing = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={logoVariants}
+          
         >
           <img
-            src="/assets/newsapi-logo.png"
+            src={newsLogo}
             alt="NewsAPI logo"
             className="h-8"
             loading="lazy"
@@ -291,7 +271,7 @@ const Landing = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={heroVariants}
+          
         >
           Join our newsletter for the latest updates!
         </motion.p>
@@ -305,13 +285,13 @@ const Landing = () => {
             type="email"
             placeholder="Enter your email"
             className="flex-grow py-2 px-4 rounded-l-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500"
-            aria-label="Email for newsletter"
+            
           />
           <motion.button
             className="bg-red-500 text-white py-2 px-6 rounded-r-full hover:bg-red-600 transition duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Subscribe to newsletter"
+           
           >
             Subscribe
           </motion.button>
@@ -321,7 +301,7 @@ const Landing = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={heroVariants}
+          
         >
           © 2025 SwipeScoop. All rights reserved.
         </motion.p>
@@ -329,21 +309,21 @@ const Landing = () => {
           <a
             href="#top"
             className="hover:underline"
-            aria-label="About SwipeScoop"
+            
           >
             Home
           </a>
           <a
             href="#features"
             className="hover:underline"
-            aria-label="Contact SwipeScoop"
+            
           >
             Features
           </a>
           <a
             href="#contact"
             className="hover:underline"
-            aria-label="Privacy Policy"
+            
           >
             Privacy
           </a>
