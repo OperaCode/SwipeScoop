@@ -57,10 +57,9 @@ const Landing = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="text-lg md:text-2xl  max-w-xl m-auto p-6"
+              className="text-lg md:text-2xl  max-w-xl m-auto p-4"
             >
-              Discover news in a snap with swipeable headlines and a fun pixel
-              grid! <br />
+              Swipe through concise headlines to stay updated in seconds, and explore our interactive pixel grid for hidden stories. <br />
               <span className=" p-3 inline-block animate-spin-slow text-7xl md:text-9xl">
                 🌍
               </span>
