@@ -42,7 +42,7 @@ const Home = () => {
 
   const [error, setError] = useState(null);
 
-  // Fetch articles
+  // Fetch articles from Currents API
   useEffect(() => {
     const fetchArticles = async () => {
       try {
@@ -50,14 +50,22 @@ const Home = () => {
         if (cached.length) setArticles(cached);
 
         const apiKey =
-          import.meta.env.VITE_NEWS_API_KEY ||
-          process.env.REACT_APP_NEWS_API_KEY;
-        if (!apiKey) throw new Error("API key not found in .env");
+          import.meta.env.VITE_CURRENTS_API_KEY ||
+          process.env.REACT_APP_CURRENTS_API_KEY;
+        if (!apiKey) throw new Error("Currents API key not found in .env");
 
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${apiKey}`
+          `https://api.currentsapi.services/v1/latest-news`,
+          {
+            params: {
+              apiKey: apiKey,
+              category: category,
+              language: "en",
+            },
+          }
         );
-        const topArticles = response.data.articles.slice(0, 10);
+
+        const topArticles = response.data.news.slice(0, 10);
         setArticles(topArticles);
         localStorage.setItem("articles", JSON.stringify(topArticles));
       } catch (error) {
@@ -65,7 +73,7 @@ const Home = () => {
         setArticles([
           {
             title: "Offline Mode",
-            source: { name: "SwipeScoop" },
+            author: "SwipeSwoop",
             description: "Check your connection.",
             url: "#",
           },
@@ -98,7 +106,7 @@ const Home = () => {
       setDailySaves(newDailySaves);
       localStorage.setItem("dailySaves", JSON.stringify(newDailySaves));
     }
-  }, []); 
+  }, []);
 
   // Handle swipe
   const onSwipe = (direction, article) => {
@@ -153,11 +161,13 @@ const Home = () => {
       <nav className="bg-blue-600 text-white p-4">
         <div className="max-w-5xl mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold flex items-center">
-            <GalleryHorizontal/>
-            SwipeScoop</h1>
+            <GalleryHorizontal />
+            SwipeSwoop
+          </h1>
           <a href="/" className="flex items-center gap-2 font-bold">
-            <LogOut/>
-            Exit</a>
+            <LogOut />
+            Exit
+          </a>
         </div>
       </nav>
 
@@ -212,14 +222,14 @@ const Home = () => {
                     {article.title}
                   </h3>
                   <p className="text-sm text-gray-600 mb-2">
-                    {article.source.name}
+                    {article.author || "Unknown"}
                   </p>
                   <p className="text-sm text-gray-700 mb-4 line-clamp-3">
                     {article.description || "No description available."}
                   </p>
-                  {article.urlToImage ? (
+                  {article.image ? (
                     <img
-                      src={article.urlToImage}
+                      src={article.image}
                       alt="Article"
                       className="h-40 object-cover rounded mb-4"
                     />
@@ -271,7 +281,7 @@ const Home = () => {
       </main>
 
       <footer className="bg-blue-800 text-white py-6 px-4 text-center">
-        <p className="mb-2">© 2025 SwipeScoop. All rights reserved.</p>
+        <p className="mb-2">© 2025 SwipeSwoop. All rights reserved.</p>
       </footer>
     </div>
   );
