@@ -73,7 +73,7 @@ const Landing = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
               href="/home"
-              className="inline-block bg-red-500 text-white py-3 w-1/3 rounded-full hover:bg-red-600 transition duration-300 shadow-lg"
+              className="inline-block bg-red-500 text-white py-3 md:w-1/4 w-1/3 px-3 rounded-full hover:bg-red-600 transition duration-300 shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -84,7 +84,7 @@ const Landing = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
               href="#features"
-              className="inline-block border border-white py-3 w-1/3 rounded-full hover:bg-white hover:text-blue-600 transition duration-300"
+              className="inline-block border border-white py-3 w-1/3 px-3 rounded-full hover:bg-white hover:text-blue-600 transition duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
