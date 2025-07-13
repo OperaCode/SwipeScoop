@@ -22,6 +22,8 @@ ChartJS.register(
   Filler
 );
 
+// const API_KEY=import.meta.env.VITE_API_KEY_GNEWS;
+
 const Home = () => {
   const [articles, setArticles] = useState([]);
   const [grid, setGrid] = useState(
@@ -43,48 +45,40 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   // Fetch articles from Currents API
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const cached = JSON.parse(localStorage.getItem("articles")) || [];
-        if (cached.length) setArticles(cached);
+ useEffect(() => {
+  const fetchArticles = async () => {
+    try {
+      const cached = JSON.parse(localStorage.getItem("articles")) || [];
+      if (cached.length) setArticles(cached);
 
-        const apiKey =
-          import.meta.env.VITE_CURRENTS_API_KEY ||
-          process.env.REACT_APP_CURRENTS_API_KEY;
-        if (!apiKey) throw new Error("Currents API key not found in .env");
+      const apiKey = import.meta.env.VITE_API_KEY_GNEWS;
+      if (!apiKey) throw new Error("GNews API key not found in .env");
 
-        const response = await axios.get(
-          `https://api.currentsapi.services/v1/latest-news`,
-          {
-            params: {
-              apiKey: apiKey,
-              category: category,
-              language: "en",
-            },
-          }
-        );
+      const response = await axios.get(
+        `https://gnews.io/api/v4/top-headlines?token=${apiKey}&lang=en&topic=${category}`
+      );
 
-        const topArticles = response.data.news.slice(0, 10);
-        setArticles(topArticles);
-        console.log(article.url);
+      const topArticles = response.data.articles.slice(0, 10);
+      setArticles(topArticles);
+      // console.log(topArticles);
 
-        localStorage.setItem("articles", JSON.stringify(topArticles));
-      } catch (error) {
-        console.error("Error fetching news:", error);
-        setArticles([
-          {
-            title: "Offline Mode",
-            author: "SwipeSwoop",
-            description: "Check your connection.",
-            url: "#",
-          },
-        ]);
-        setError("Failed to load articles. Using offline mode.");
-      }
-    };
-    fetchArticles();
-  }, [category]);
+      localStorage.setItem("articles", JSON.stringify(topArticles));
+    } catch (error) {
+      console.error("Error fetching news:", error);
+      setArticles([
+        {
+          title: "Offline Mode",
+          author: "SwipeSwoop",
+          description: "Check your connection.",
+          url: "#",
+        },
+      ]);
+      setError("Failed to load articles. Using offline mode.");
+    }
+  };
+  fetchArticles();
+}, [category]);
+
 
   // True streak check on load
   useEffect(() => {
