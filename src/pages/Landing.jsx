@@ -19,10 +19,10 @@ const Landing = () => {
           <a href="#top" className="hover:underline font-bold ">
             Home
           </a>
-          <a href="#features" className="hover:underline font-bold">
+          <a href="#features" className=" hover:underline font-bold">
             Features
           </a>
-          <a href="#contact" className="hover:underline font-bold">
+          <a href="#contact" className=" hover:underline font-bold">
             Contact
           </a>
         </div>
@@ -67,13 +67,13 @@ const Landing = () => {
           </div>
 
           {/* Hero Buttons */}
-          <motion.div className="flex w-2/3 gap-4 m-auto justify-center ">
+          <motion.div className="flex justify-center max-w-xl gap-4 m-auto">
             <motion.a
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
               href="/home"
-              className="inline-block bg-red-500 text-white py-3 md:w-1/4 w-1/3 px-3 rounded-full hover:bg-red-600 transition duration-300 shadow-lg"
+              className="flex-1  bg-red-500 text-white py-3 md:w-1/5 w-2/3 px-3 rounded-full hover:bg-red-600 transition duration-300 shadow-lg items-center m-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -84,7 +84,7 @@ const Landing = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
               href="#features"
-              className="inline-block border border-white py-3 w-1/3 px-3 rounded-full hover:bg-white hover:text-blue-600 transition duration-300"
+              className="flex-1  border border-white py-3 md:w-1/5 w-2/3 px-3 rounded-full hover:bg-white hover:text-blue-600 transition duration-300 m-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
