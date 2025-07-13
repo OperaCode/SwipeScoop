@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TinderCard from "react-tinder-card";
 import { Line } from "react-chartjs-2";
-import { GalleryHorizontal, LogOut } from 'lucide-react';
+import { GalleryHorizontal, LogOut } from "lucide-react";
 import {
   Chart as ChartJS,
   LineElement,
@@ -67,6 +67,8 @@ const Home = () => {
 
         const topArticles = response.data.news.slice(0, 10);
         setArticles(topArticles);
+        console.log(article.url);
+
         localStorage.setItem("articles", JSON.stringify(topArticles));
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -238,14 +240,12 @@ const Home = () => {
                       <p className="text-gray-500">No Image</p>
                     </div>
                   )}
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => window.open(article.url, "_blank")}
                     className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors"
                   >
                     Read More
-                  </a>
+                  </button>
                 </TinderCard>
               ))
             ) : (
