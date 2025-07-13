@@ -11,7 +11,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 flex flex-col font-sans">
       {/* Navigation Header */}
-      <nav className="sticky top-0 bg-blue-700 text-white py-4 px-4 flex justify-around items-center shadow-md z-10">
+      <nav className="sticky top-0 bg-blue-700 text-white py-4 px-8 flex justify-between items-center shadow-md z-10">
         <h1 className="text-2xl font-extrabold flex items-center ">
           <GalleryHorizontal/>
           SwipeScoop</h1>
